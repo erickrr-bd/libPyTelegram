@@ -8,9 +8,11 @@ class libPyTelegram:
 		"""
 		Method that sends a message using the Telegram API.
 
-		:arg telegram_bot_token: Telegram bot token that will be used to send the messages.
-		:arg telegram_chat_id: Identifier of the Telegram channel where the messages will be sent.
-		:arg message_to_send: Message to send to the Telegram channel.
+		Returns the HTTP code of the request response.
+
+		:arg telegram_bot_token (string): Telegram bot token that will be used to send the messages.
+		:arg telegram_chat_id (string): Identifier of the Telegram channel where the messages will be sent.
+		:arg message_to_send (string): Message to send to the Telegram channel.
 		"""
 		if len(message_to_send) > 4096:
 			message_to_send = "The size of the message in Telegram (4096) has been exceeded. Overall size: " + str(len(message_to_send))
@@ -30,10 +32,12 @@ class libPyTelegram:
 		"""
 		Method that sends a message and an attached file using the Telegram API.
 
-		:arg telegram_bot_token: Telegram bot token that will be used to send the messages.
-		:arg telegram_chat_id: Identifier of the Telegram channel where the messages will be sent.
-		:arg message_to_send: Message to send to the Telegram channel.
-		:arg file_to_send: File that will be sent attached to the message to the Telegram channel.
+		Returns the HTTP code of the request response.
+
+		:arg telegram_bot_token (string): Telegram bot token that will be used to send the messages.
+		:arg telegram_chat_id (string): Identifier of the Telegram channel where the messages will be sent.
+		:arg message_to_send (string): Message to send to the Telegram channel.
+		:arg file_to_send (string): File that will be sent attached to the message to the Telegram channel.
 		"""
 		url = 'https://api.telegram.org/bot' + str(telegram_bot_token) + '/'
 		data = [("chat_id", telegram_chat_id), ('document', (FORM_FILE, file_to_send))]
