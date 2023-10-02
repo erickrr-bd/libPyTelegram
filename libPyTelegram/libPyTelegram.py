@@ -4,49 +4,49 @@ from pycurl import Curl, HTTP_CODE, FORM_FILE
 
 class libPyTelegram:
 
-	def sendMessageTelegram(self, telegram_bot_token, telegram_chat_id, message_to_send):
+	def sendMessageTelegram(self, telegram_bot_token, telegram_chat_id, telegram_message):
 		"""
-		Method that sends a message using the Telegram API.
+		Method that sends a text message via Telegram API.
 
-		Returns the HTTP code of the request response.
+		Returns the HTTP code of the response.
 
-		:arg telegram_bot_token (string): Telegram bot token that will be used to send the messages.
-		:arg telegram_chat_id (string): Identifier of the Telegram channel where the messages will be sent.
-		:arg message_to_send (string): Message to send to the Telegram channel.
+		:arg telegram_bot_token (string): Telegram Bot Token.
+		:arg telegram_chat_id (string): Telegram channel identifier.
+		:arg telegram_message (string): Message to send via Telegram.
 		"""
-		if len(message_to_send) > 4096:
-			message_to_send = "The size of the message in Telegram (4096) has been exceeded. Overall size: " + str(len(message_to_send))
+		if len(telegram_message) > 4096:
+			telegram_message = "The size of the message in Telegram (4096) has been exceeded. Overall size: " + str(len(telegram_message))
 		c = Curl()
-		url = 'https://api.telegram.org/bot' + str(telegram_bot_token) + '/sendMessage'
+		url = "https://api.telegram.org/bot" + str(telegram_bot_token) + "/sendMessage"
 		c.setopt(c.URL, url)
-		data = {'chat_id' : telegram_chat_id, 'text' : message_to_send}
+		data = {"chat_id" : telegram_chat_id, "text" : telegram_message}
 		pf = urlencode(data)
 		c.setopt(c.POSTFIELDS, pf)
 		c.perform_rs()
-		status_code = c.getinfo(HTTP_CODE)
+		response_http_code = c.getinfo(HTTP_CODE)
 		c.close()
-		return status_code
+		return response_http_code
 
 
-	def sendFileMessageTelegram(self, telegram_bot_token, telegram_chat_id, message_to_send, file_to_send):
+	def sendFileMessageTelegram(self, telegram_bot_token, telegram_chat_id, telegram_message, file):
 		"""
 		Method that sends a message and an attached file using the Telegram API.
 
-		Returns the HTTP code of the request response.
+		Returns the HTTP code of the response.
 
-		:arg telegram_bot_token (string): Telegram bot token that will be used to send the messages.
-		:arg telegram_chat_id (string): Identifier of the Telegram channel where the messages will be sent.
-		:arg message_to_send (string): Message to send to the Telegram channel.
-		:arg file_to_send (string): File that will be sent attached to the message to the Telegram channel.
+		:arg telegram_bot_token (string): Telegram Bot Token.
+		:arg telegram_chat_id (string): Telegram channel identifier.
+		:arg telegram_message (string): Message to send via Telegram.
+		:arg file (string): File to send via Telegram.
 		"""
-		url = 'https://api.telegram.org/bot' + str(telegram_bot_token) + '/'
-		data = [("chat_id", telegram_chat_id), ('document', (FORM_FILE, file_to_send))]
-		data.append(("caption", message_to_send))
+		url = "https://api.telegram.org/bot" + str(telegram_bot_token) + '/'
+		data = [("chat_id", telegram_chat_id), ("document", (FORM_FILE, file))]
+		data.append(("caption", telegram_message))
 		c = Curl()
 		storage = StringIO()
-		c.setopt(c.URL, url + 'sendDocument')
+		c.setopt(c.URL, url + "sendDocument")
 		c.setopt(c.HTTPPOST, data)
 		c.perform_rs()
-		status_code = c.getinfo(HTTP_CODE)
+		response_http_code = c.getinfo(HTTP_CODE)
 		c.close()
-		return status_code
+		return response_http_code
