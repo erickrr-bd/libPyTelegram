@@ -10,7 +10,7 @@ Easy sending messages via Telegram with Pycurl.
 - CentOS 8, Red Hat 8 or Rocky Linux 8
 - Python 3.9
 - Python Libraries
-  - pycurl == 7.45.2
+  - pycurl <= 7.45.2 (It's recommended to use the latest version specified)
     
 # Installation
 
@@ -18,7 +18,7 @@ Copy the "libPyTelegram" folder to the following path:
 
 `/usr/local/lib/python3.9/site-packages`
 
-**NOTE:** The path varies depending on the version of Python.
+**NOTE:** The path depends on the version of Python used.
 
 # Commercial Support
 ![Tekium](https://github.com/unmanarc/uAuditAnalyzer2/blob/master/art/tekium_slogo.jpeg)
