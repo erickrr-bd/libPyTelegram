@@ -18,8 +18,7 @@ Copy the "libPyTelegram" folder to the following path:
 
 `/usr/local/lib/python3.9/site-packages`
 
-**NOTE:** The path depends on the version of Python used.
-
+**NOTE:** The path depends on the Python version.
 # Commercial Support
 ![Tekium](https://github.com/unmanarc/uAuditAnalyzer2/blob/master/art/tekium_slogo.jpeg)
 
