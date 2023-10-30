@@ -29,6 +29,7 @@ When using the latest version of PyCurl, the following error may be displayed:
 To solve it, the following commands must be executed (first uninstall PyCurl, if it's installed):
 
 `export PYCURL_SSL_LIBRARY=openssl`
+
 `pip3 install pycurl`
 
 # Commercial Support
