@@ -14,8 +14,6 @@ class libPyTelegram:
 		:arg telegram_chat_id (string): Telegram channel identifier.
 		:arg telegram_message (string): Message to send via Telegram.
 		"""
-		if len(telegram_message) > 4096:
-			telegram_message = "The size of the message in Telegram (4096) has been exceeded. Overall size: " + str(len(telegram_message))
 		c = Curl()
 		url = "https://api.telegram.org/bot" + str(telegram_bot_token) + "/sendMessage"
 		c.setopt(c.URL, url)
