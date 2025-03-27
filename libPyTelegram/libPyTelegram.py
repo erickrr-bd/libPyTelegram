@@ -1,50 +1,39 @@
+"""
+Author: Erick Roberto Rodriguez Rodriguez
+Email: erodriguez@tekium.mx, erickrr.tbd93@gmail.com
+GitHub: https://github.com/erickrr-bd/libPyTelegram
+libPyTelegram v2.2 - March 2025
+"""
 from io import StringIO
+from dataclasses import dataclass
 from urllib.parse import urlencode
 from pycurl import Curl, HTTP_CODE, FORM_FILE
 
+@dataclass
 class libPyTelegram:
+	"""
+	Easy sending messages via Telegram with Pycurl. 
+	"""
 
-	def sendMessageTelegram(self, telegram_bot_token, telegram_chat_id, telegram_message):
+	def send_telegram_message(self, telegram_bot_token: str, telegram_chat_id: str, telegram_message: str) -> int:
 		"""
-		Method that sends a text message via Telegram API.
+		Method that sends a text message via Telegram.
 
-		Returns the HTTP code of the response.
+		Parameters:
+			telegram_bot_token (str): Telegram Bot Token.
+			telegram_chat_id (str): Telegram Chat ID.
+			telegram_message (str): Message to send.
 
-		:arg telegram_bot_token (string): Telegram Bot Token.
-		:arg telegram_chat_id (string): Telegram channel identifier.
-		:arg telegram_message (string): Message to send via Telegram.
+		Returns:
+			telegram_message (int): HTTP code returned by the Telegram API.
 		"""
-		c = Curl()
-		url = "https://api.telegram.org/bot" + str(telegram_bot_token) + "/sendMessage"
-		c.setopt(c.URL, url)
+		curl = Curl()
+		url = f"https://api.telegram.org/bot{telegram_bot_token}/sendMessage"
+		curl.setopt(curl.URL, url)
 		data = {"chat_id" : telegram_chat_id, "text" : telegram_message}
-		pf = urlencode(data)
-		c.setopt(c.POSTFIELDS, pf)
-		c.perform_rs()
-		response_http_code = c.getinfo(HTTP_CODE)
-		c.close()
-		return response_http_code
-
-
-	def sendFileMessageTelegram(self, telegram_bot_token, telegram_chat_id, telegram_message, file):
-		"""
-		Method that sends a message and an attached file using the Telegram API.
-
-		Returns the HTTP code of the response.
-
-		:arg telegram_bot_token (string): Telegram Bot Token.
-		:arg telegram_chat_id (string): Telegram channel identifier.
-		:arg telegram_message (string): Message to send via Telegram.
-		:arg file (string): File to send via Telegram.
-		"""
-		url = "https://api.telegram.org/bot" + str(telegram_bot_token) + '/'
-		data = [("chat_id", telegram_chat_id), ("document", (FORM_FILE, file))]
-		data.append(("caption", telegram_message))
-		c = Curl()
-		storage = StringIO()
-		c.setopt(c.URL, url + "sendDocument")
-		c.setopt(c.HTTPPOST, data)
-		c.perform_rs()
-		response_http_code = c.getinfo(HTTP_CODE)
-		c.close()
+		post_fields = urlencode(data)
+		curl.setopt(curl.POSTFIELDS, post_fields)
+		curl.perform_rs()
+		response_http_code = curl.getinfo(HTTP_CODE)
+		curl.close()
 		return response_http_code
