@@ -1,4 +1,4 @@
-# libPyTelegram v2.2
+# ⌯⌲ libPyTelegram v2.2
 
 A lightweight Python library for sending Telegram messages using PyCurl.
 
@@ -22,14 +22,16 @@ Copy the "libPyTelegram" folder to the following path:
 
 **NOTE:** The path depends on the Python version.
 
-# Issues
+# ⚠️ Possible Issues
 
-When using the latest version of PyCurl, the following error may be displayed:
+When using the latest version of PyCurl , in certain situations it's possible to get the following error:
 
 `ImportError: pycurl: libcurl link-time ssl backend (openssl) is different from compile-time ssl backend (none/other)`
 
-To solve it, the following commands must be executed (first uninstall PyCurl, if it's installed):
+To resolve this possible error, you must first uninstall PyCurl and define the following environment variable:
 
 `export PYCURL_SSL_LIBRARY=openssl`
+
+Once the above is done, it's required to reinstall PyCurl on the system:
 
 `pip3 install pycurl`
