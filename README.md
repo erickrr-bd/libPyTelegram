@@ -33,7 +33,3 @@ To solve it, the following commands must be executed (first uninstall PyCurl, if
 `export PYCURL_SSL_LIBRARY=openssl`
 
 `pip3 install pycurl`
-
-For integration with other platforms such as the Elastic stack, SIEMs, managed security providers in-house solutions, or for any other requests for extending current functionality that you wish to see included in future versions, please contact us: info at tekium.mx
-
-For more information, go to: https://www.tekium.mx/
