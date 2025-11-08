@@ -26,9 +26,8 @@ The following command is executed from the root of the project:
 
 This action will generate the following files:
 
-dist/
-├── libPyTelegram-2.2-py3-none-any.whl
-├── libPyTelegram-2.2.tar.gz
+dist/libPyTelegram-2.2-py3-none-any.whl
+dist/libPyTelegram-2.2.tar.gz
 
 It's now possible to install the library using the Wheel file and the pip tool:
 
