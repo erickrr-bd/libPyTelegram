@@ -4,17 +4,15 @@ A lightweight Python library for sending Telegram messages using PyCurl.
 
 libPyTelegram is a lightweight library written in Python that makes it easy to send messages over Telegram using PyCurl. It's designed to easily integrate into automated scripts, monitoring flows, and environments where Telegram is used as the primary channel for technical communication or alerts. 
 
-## 🚀 Characteristics
-- Sending a text message via Telegram.
-- Sending a text message with an attached file via Telegram.
+# 🚀 Characteristics
+- Sending messages to Telegram channels.
+- Sending messages with files attached to Telegram channels.
+- Easy integration into monitoring scripts, CI/CD pipelines and auditing tools.
 
-# Requirements
-- Red Hat 8 or Rocky Linux 8
+# 🧱 Requirements
 - Python 3.12+
 - Python Libraries
-  - pycurl
-
-**NOTE:** The versions shown are the versions with which it was tested. This doesn't mean that versions older than these don't work.
+  - [pycurl](https://pycurl.io/)
 
 # Installation
 
