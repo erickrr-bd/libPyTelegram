@@ -3,7 +3,7 @@ Author: Erick Roberto Rodriguez Rodriguez
 Email: erodriguez@tekium.mx, erickrr.tbd93@gmail.com
 GitHub: https://github.com/erickrr-bd/libPyTelegram
 libPyTelegram v2.2 - November 2025
-Easy sending messages via Telegram with Pycurl. 
+A lightweight Python library for sending Telegram messages using PyCurl.
 """
 from io import StringIO
 from dataclasses import dataclass
