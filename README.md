@@ -16,11 +16,23 @@ libPyTelegram is a lightweight library written in Python that makes it easy to s
 
 # 🛠️ Installation
 
-Copy the "libPyTelegram" folder to the following path:
+The installation can be done using a .whl (Wheel) file. To generate a file, you must have the following packaging tools installed:
 
-`/usr/local/lib/python3.9/site-packages`
+`pip install setuptools wheel`
 
-**NOTE:** The path depends on the Python version.
+The following command is executed from the root of the project:
+
+`python setup.py sdist bdist_wheel`
+
+This action will generate the following files:
+
+dist/
+├── libPyTelegram-2.2-py3-none-any.whl
+├── libPyTelegram-2.2.tar.gz
+
+It's now possible to install the library using the Wheel file and the pip tool:
+
+`pip3 install libPyTelegram-2.2-py3-none-any.whl`
 
 # ⚠️ Possible Issues
 
