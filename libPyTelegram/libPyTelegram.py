@@ -2,15 +2,13 @@
 Author: Erick Roberto Rodriguez Rodriguez
 Email: erodriguez@tekium.mx, erickrr.tbd93@gmail.com
 GitHub: https://github.com/erickrr-bd/libPyTelegram
-libPyTelegram v2.2 - November 2025
-A lightweight Python library for sending Telegram messages using PyCurl.
+libPyTelegram v2.3 - July 2026
+A minimal and robust Python wrapper around the Telegram Bot API using PycURL.
 """
-from io import StringIO
-from dataclasses import dataclass
+from io import BytesIO
 from urllib.parse import urlencode
 from pycurl import Curl, HTTP_CODE, FORM_FILE
 
-@dataclass
 class libPyTelegram:
 
 	def send_telegram_message(self, telegram_bot_token: str, telegram_chat_id: str, telegram_message: str) -> int:
@@ -51,7 +49,7 @@ class libPyTelegram:
 			response_http_code (int): HTTP code returned by the Telegram API.
 		"""
 		curl = Curl()
-		storage = StringIO()
+		storage = BytesIO()
 		url = f"https://api.telegram.org/bot{telegram_bot_token}/sendDocument"
 		data = [("chat_id", telegram_chat_id), ("document", (FORM_FILE, file)), ("caption", telegram_message)]
 		curl.setopt(curl.URL, url)
@@ -60,4 +58,5 @@ class libPyTelegram:
 		curl.perform_rs()
 		response_http_code = curl.getinfo(HTTP_CODE)
 		curl.close()
+		storage.close()
 		return response_http_code
